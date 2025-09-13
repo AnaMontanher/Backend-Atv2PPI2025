@@ -3,10 +3,10 @@ import Docente from "./Models/docente.js";
 
 //***MÉTODO GRAVAR */
 
-const docente = new Docente("654.875.555-00", "Ryan", "Refacho", "Mestrado");
+const docente = new Docente("611.875.555-00", "Neuza", "Souza", "Mestrado");
 
-await docente.gravar();
-console.log("Docente cadastrado com sucesso!");
+// await docente.gravar();
+// console.log("Docente cadastrado com sucesso!");
 
 const curso = new Curso(
   1,
@@ -20,8 +20,8 @@ const curso = new Curso(
   docente
 );
 
-await curso.gravar();
-console.log("Curso cadastrado com sucesso!");
+// await curso.gravar();
+// console.log("Curso cadastrado com sucesso!");
 
 //***MÉTODO ALTERAR
 

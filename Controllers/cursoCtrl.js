@@ -78,7 +78,7 @@ export default class CursoCTRL {
         dados.data_inicio &&
         dados.data_fim &&
         dados.cont_prag &&
-        dados.docente
+        dados.docente.cpf
       ) {
         const curso = new Curso(
           dados.id,
@@ -89,7 +89,7 @@ export default class CursoCTRL {
           dados.data_inicio,
           dados.data_fim,
           dados.cont_prag,
-          dados.docente
+          dados.docente.cpf
         );
 
         curso
@@ -116,11 +116,11 @@ export default class CursoCTRL {
       }
     } else {
       //CODIGO 400 o erro é do usuário que fez a requisição
+      resposta.status(400).json({
+        status: false,
+        mensagem: "Requisição inválida",
+      });
     }
-    resposta.status(400).json({
-      status: false,
-      mensagem: "Requisição inválida",
-    });
   }
   //HTTP DELETE - remove o recurso
   excluir(requisicao, resposta) {

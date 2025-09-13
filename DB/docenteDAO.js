@@ -64,7 +64,7 @@ export default class DocenteDAO {
     cpf = cpf || " ";
     const conexao = await conectar();
     const sql = "SELECT * from Docente WHERE doc_cpf = ?";
-    const [registros] = await conexao.query(sql);
+    const [registros] = await conexao.query(sql, [cpf]);
     await conexao.release();
 
     let listaDocentes = [];

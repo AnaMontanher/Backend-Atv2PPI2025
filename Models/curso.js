@@ -7,6 +7,7 @@ export default class Curso {
   #nome;
   #sigla;
   #carga;
+  #valor;
   #data_inicio;
   #data_fim;
   #cont_prag;
@@ -17,6 +18,7 @@ export default class Curso {
     nome = "",
     sigla = "",
     carga = 0,
+    valor = 0,
     data_inicio = "",
     data_fim = "",
     cont_prag = "",
@@ -26,6 +28,7 @@ export default class Curso {
     this.#nome = nome;
     this.#sigla = sigla;
     this.#carga = carga;
+    this.#valor = valor;
     this.#data_inicio = data_inicio;
     this.#data_fim = data_fim;
     this.#cont_prag = cont_prag;
@@ -57,12 +60,21 @@ export default class Curso {
   set sigla(sigla) {
     this.#sigla = sigla;
   }
+  
   get carga() {
     return this.#carga;
   }
 
   set carga(carga) {
     this.#carga = carga;
+  }
+
+  get valor() {
+    return this.#valor;
+  }
+
+  set valor(valor) {
+    this.#valor = valor;
   }
 
   get data_inicio() {
@@ -102,6 +114,7 @@ export default class Curso {
     ID: ${this.#id}\n
     Nome do Curso: ${this.#nome} - ${this.#sigla}\n
     Carga Horária: ${this.#carga}\n
+    Valor: ${this.#valor}\n
     Data_inicio: ${this.#data_inicio}\n
     Data_fim: ${this.#data_fim}\n
     Conteúdo Pragramático: ${this.#cont_prag}\n
@@ -116,6 +129,7 @@ export default class Curso {
       nome: this.#nome,
       sigla: this.#sigla,
       carga: this.#carga,
+      valor: this.#valor,
       data_inicio: this.#data_inicio,
       data_fim: this.#data_fim,
       cont_prag: this.#cont_prag,

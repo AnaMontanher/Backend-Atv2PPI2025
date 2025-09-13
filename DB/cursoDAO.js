@@ -8,17 +8,17 @@ export default class CursoDAO {
     if (curso instanceof Curso) {
       const conexao = await conectar();
       const sql =
-        "INSERT INTO curso(cur_id,cur_nome,cur_sigla,cur_valor,cur_carga,cur_data_inicio,cur_data_fim,cur_cont_prag, doc_cpf) VALUES (?,?,?,?,?,?,?,?)";
+        "INSERT INTO curso(cur_id,cur_nome,cur_sigla,cur_carga,cur_valor,cur_data_inicio,cur_data_fim,cur_cont_prag, doc_cpf) VALUES (?,?,?,?,?,?,?,?,?)";
       const parametros = [
         curso.id,
         curso.nome,
         curso.sigla,
-        curso.valor,
         curso.carga,
+        curso.valor,
         curso.data_inicio,
         curso.data_fim,
         curso.cont_prag,
-        curso.docente,
+        curso.docente.cpf,
       ];
 
       await conexao.execute(sql, parametros);
@@ -89,7 +89,7 @@ export default class CursoDAO {
     const conexao = await conectar();
     const sql =
       "SELECT * from Curso cur INNER JOIN Docente doc ON cur.doc_cpf = doc.doc_cpf WHERE cur.cur_id = ? order by doc.doc_nome";
-    const [registros] = await conexao.query(sql);
+    const [registros] = await conexao.query(sql, [id]);
     await conexao.release();
 
     let listaCursos = [];

@@ -85,11 +85,11 @@ export default class DocenteCTRL {
       }
     } else {
       //CODIGO 400 o erro é do usuário que fez a requisição
+      resposta.status(400).json({
+        status: false,
+        mensagem: "Requisição inválida",
+      });
     }
-    resposta.status(400).json({
-      status: false,
-      mensagem: "Requisição inválida",
-    });
   }
   //HTTP DELETE - remove o recurso
   excluir(requisicao, resposta) {

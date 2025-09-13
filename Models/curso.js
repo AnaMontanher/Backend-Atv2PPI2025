@@ -27,9 +27,9 @@ export default class Curso {
     this.#sigla = sigla;
     this.#carga = carga;
     this.#data_inicio = data_inicio;
-    this.#data_fim = data_fim; 
+    this.#data_fim = data_fim;
     this.#cont_prag = cont_prag;
-    this.#docente = docente//Relacionamento da classe cliente e data_fim
+    this.#docente = docente; //Relacionamento da classe cliente e data_fim
   }
 
   //definir métodos de acesso públicos utilizando get e set
@@ -80,15 +80,15 @@ export default class Curso {
     this.#data_fim = data_fim;
   }
 
-    get cont_prag() {
+  get cont_prag() {
     return this.#cont_prag;
   }
 
   set cont_prag(cont_prag) {
     this.#cont_prag = cont_prag;
   }
- 
-    get docente() {
+
+  get docente() {
     return this.#docente;
   }
 
@@ -119,7 +119,7 @@ export default class Curso {
       data_inicio: this.#data_inicio,
       data_fim: this.#data_fim,
       cont_prag: this.#cont_prag,
-      docente: this.#docente
+      docente: this.#docente,
     };
   }
   async gravar() {
@@ -136,6 +136,10 @@ export default class Curso {
   }
   async consultar() {
     const cursoDAO = new CursoDAO();
-    return await cursoDAO.consultar(this); //único método que RETORNA alguma informação
+    return await cursoDAO.consultar(); //único método que RETORNA alguma informação
+  }
+  async consultarID(id) {
+    const cursoDAO = new CursoDAO();
+    return await cursoDAO.consultarID(id); //único método que RETORNA alguma informação
   }
 }

@@ -8,13 +8,7 @@ export default class Docente {
   #sobrenome;
   #titulacao;
 
-
-  constructor(
-    cpf = 0,
-    nome = "",
-    sobrenome = "",
-    titulacao = "",
-  ) {
+  constructor(cpf = 0, nome = "", sobrenome = "", titulacao = "") {
     this.#cpf = cpf;
     this.#nome = nome;
     this.#sobrenome = sobrenome;
@@ -54,7 +48,6 @@ export default class Docente {
     this.#titulacao = titulacao;
   }
 
-
   //Escolhr uma forma estruturada de representar um objeto do tipo Docente
   toString() {
     //override do método da classe Pai
@@ -87,6 +80,10 @@ export default class Docente {
   }
   async consultar() {
     const docenteDAO = new DocenteDAO();
-    return await docenteDAO.consultar(this); //único método que RETORNA alguma informação
+    return await docenteDAO.consultar(); //único método que RETORNA alguma informação
+  }
+  async consultarCPF(cpf) {
+    const docenteDAO = new DocenteDAO();
+    return await docenteDAO.consultarCPF(cpf); //único método que RETORNA alguma informação
   }
 }

@@ -44,8 +44,26 @@ export default class DocenteDAO {
   }
   async consultar() {
     const conexao = await conectar();
-    const sql =
-      "SELECT * from Docente";
+    const sql = "SELECT * from Docente";
+    const [registros] = await conexao.query(sql);
+    await conexao.release();
+
+    let listaDocentes = [];
+    for (const registro of registros) {
+      const docente = new Docente(
+        registro.doc_cpf,
+        registro.doc_nome,
+        registro.doc_sobrenome,
+        registro.doc_titulacao
+      );
+      listaDocentes.push(docente);
+    }
+    return listaDocentes;
+  }
+  async consultarCPF(cpf) {
+    cpf = cpf || " ";
+    const conexao = await conectar();
+    const sql = "SELECT * from Docente WHERE doc_cpf = ?";
     const [registros] = await conexao.query(sql);
     await conexao.release();
 
